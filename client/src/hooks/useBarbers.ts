@@ -12,6 +12,7 @@ const useBarbers = (services: string[], searchText: string) => {
   const {
     data: barbers = { count: 0, next: null, previous: null, results: [] },
     isLoading,
+    isFetching,
     isError,
     refetch,
   } = useQuery<BarberResponse>({
@@ -54,14 +55,11 @@ const useBarbers = (services: string[], searchText: string) => {
     };
   }, [searchText, services, queryClient]);
 
-  // Refetch when search text is cleared.
   useEffect(() => {
-    if (!searchText) {
-      refetch();
-    }
+    refetch();
   }, [services, searchText, refetch]);
 
-  return { barbers, isLoading, isError };
+  return { barbers, isLoading, isFetching, isError };
 };
 
 export default useBarbers;

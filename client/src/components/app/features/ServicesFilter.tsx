@@ -30,7 +30,7 @@ const ServiceItem = ({ service, toggleService }: ServiceItemProps) => (
 );
 
 export default function ServicesFilter({ setServices }: ServicesProps) {
-  const { data, isLoading, error } = useFetchDataOnLoad<ServiceResponse>("services", "services");
+  const { data, error } = useFetchDataOnLoad<ServiceResponse>("services", "services");
 
   const toggleService = useCallback(
     (slug: string) => {
@@ -39,8 +39,7 @@ export default function ServicesFilter({ setServices }: ServicesProps) {
     [setServices]
   );
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading services</div>;
+  if (error) return <div className="text-white self-center">Error loading services</div>;
 
   return (
     <div className="self-start flex items-center text-white text-sm gap-2 flex-wrap">
