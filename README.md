@@ -24,6 +24,9 @@ A **simple React TypeScript project that features a single form to fetch and dis
 - lucide-react
 - react-loading-skeleton
 
+## Installation
+
+To run the project locally:
 
 ```bash
 # Clone the repository
