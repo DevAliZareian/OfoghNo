@@ -33,14 +33,15 @@ const useBarbers = (services: string[], searchText: string) => {
     if (!searchText) return;
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-      axios
+    const timeoutId = setTimeout(async () => {
+      await axios
         .get(`${BASE_URL}/barbers/?search=${searchText}`, {
           signal: controller.signal,
         })
         .then((response) => {
           // Update the query cache with the search result
           queryClient.setQueryData(["barbers", services], response.data);
+          console.log(response);
         })
         .catch((error) => {
           if (error.name !== "AbortError") {
@@ -56,7 +57,7 @@ const useBarbers = (services: string[], searchText: string) => {
   }, [searchText, services, queryClient]);
 
   useEffect(() => {
-    refetch();
+    if (!searchText) refetch();
   }, [services, searchText, refetch]);
 
   return { barbers, isLoading, isFetching, isError };
