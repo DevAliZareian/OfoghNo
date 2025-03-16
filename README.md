@@ -6,11 +6,24 @@ A **simple React TypeScript project that features a single form to fetch and dis
 
 ## Features
 
-- [x] **Customizable Timer** – Set your preferred Pomodoro, short break, and long break durations.**
-- [x] **User-Friendly Interface** – A clean and distraction-free UI for better focus.
-- [x] **Automatic Cycle Management** – Seamlessly transitions between work and break sessions.
-- [x] **Progress Tracking** – Monitor completed Pomodoros to stay motivated.
-- [x] **Lightweight and Fast** – Built using React for smooth performance.
+- [x] **Search by Name** – Quickly find barbers by entering their name.
+- [x] **Filter by Services** – Select specific services like haircuts, beard trims, or styling.
+- [x] **Filter by Situation** – Shops or individual Hairstylist.
+- [x] **Real-Time Data Fetching** – Get up-to-date barber listings with API integration.
+- [x] **Modern UI** – Clean and minimal design for a smooth user experience.
+
+## Technologies
+
+- Core: ["React", "React Router", "React Hooks", "TypeScript"],
+- State Management: ["React Query"],
+- Performance Optimization: ["Memoization", "Lazy Loading", "Suspense"],
+- Styling: ["Tailwind CSS"],
+
+## Packages
+
+- lucide-react
+- react-loading-skeleton
+
 
 ```bash
 # Clone the repository
