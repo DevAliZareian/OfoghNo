@@ -52,11 +52,9 @@ function Application() {
       <ServicesFilter setServices={setServices} />
 
       <BarberSection isFetching={isFetching}>
-        {filteredBarbers.length > 0 ? (
-          filteredBarbers.map((item: Barber) => <BarberIcon key={item.slug} item={item} openServiceId={openServiceId} setOpenServiceId={setOpenServiceId} isLoading={isLoading} />)
-        ) : (
-          <div>No barbers found</div>
-        )}
+        {filteredBarbers.map((item: Barber) => (
+          <BarberIcon key={item.slug} item={item} openServiceId={openServiceId} setOpenServiceId={setOpenServiceId} isLoading={isLoading} />
+        ))}
       </BarberSection>
     </Form>
   );

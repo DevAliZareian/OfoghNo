@@ -1,4 +1,3 @@
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // Ensure skeleton styles are applied
 import { Barber } from "../../../utils/types"; // Adjust the import path as needed
 
@@ -9,16 +8,16 @@ interface BarberProps {
   isLoading: boolean;
 }
 
-export default function BarberIcon({ item, openServiceId, setOpenServiceId, isLoading }: BarberProps) {
+export default function BarberIcon({ item, openServiceId, setOpenServiceId }: BarberProps) {
   return (
-    <div key={item.slug} className="text-white flex items-center justify-between gap-2 w-full">
+    <div className="text-white flex items-center justify-between gap-2 w-full">
       <div className="flex items-center gap-2">
         <div className="w-12 h-12 rounded-full overflow-hidden relative">
-          {item.avatar ? <img src={item.avatar} alt="Avatar" className="w-full h-full object-cover" /> : <Skeleton circle={true} height={48} width={48} baseColor="#4A90E2" />}
+          <img src={item.avatar} alt="Avatar" className="w-full h-full object-cover" />
         </div>
         <div className="flex flex-col gap-1.5 relative">
           <p className="text-lg shrink">
-            {isLoading ? <Skeleton width={100} /> : item.fullname} -{" "}
+            {item.fullname} -{" "}
             <span
               className="text-[#4A90E2] text-xs cursor-pointer relative"
               onClick={(e) => {
@@ -29,23 +28,19 @@ export default function BarberIcon({ item, openServiceId, setOpenServiceId, isLo
               Services
               {openServiceId === item.slug && (
                 <div className="z-50 absolute top-full mt-2 left-0 p-2 bg-white shadow-md border border-gray-300 rounded-lg">
-                  {item.services && item.services.length > 0 ? item.services.map((service, index) => <p key={index}>{service}</p>) : <Skeleton count={3} />}
+                  {item.services.map((service, index) => (
+                    <p key={index}>{service}</p>
+                  ))}
                 </div>
               )}
             </span>
           </p>
-          <p className="text-xs">{isLoading ? <Skeleton width={150} /> : item.address}</p>
+          <p className="text-xs">{item.address}</p>
         </div>
       </div>
       <div className="flex items-center gap-0.5">
         <p className="shrink-0">
-          {isLoading ? (
-            <Skeleton width={50} />
-          ) : (
-            <>
-              {item.rate} <span className="text-xs text-[#B0B0B0]">({item.reviews_count})</span>
-            </>
-          )}
+          {item.rate} <span className="text-xs text-[#B0B0B0]">({item.reviews_count})</span>
         </p>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4A90E2" className="w-4">
           <path
